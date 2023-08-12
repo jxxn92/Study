@@ -1,0 +1,5 @@
+a=input()
+a=float(a)
+#print(format(a, ".2f"))
+#print(round(a,2))
+print("{:.2f}".format(a))
