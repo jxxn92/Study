@@ -12,7 +12,7 @@
 ```
 
 </div>
-</p>****
+</p>
 
 <div align="center">
 <p>
