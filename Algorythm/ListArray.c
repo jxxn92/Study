@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define MAX_SIZE 10
+#define MAX_SIZE 5
 
 typedef int element;
 
@@ -50,10 +50,10 @@ void insert_last(ListArray *l, element item){
 }
 
 void insert_first(ListArray *l, element item){
-    if(is_full(l) && (l->size) >= MAX_SIZE){
-        error("Error");
+    if(is_full(l) && (l->size >= MAX_SIZE)){
+        error("error");
     }
-    for(int i = l->size; i >= 0; i--){
+    for(int i = (l->size-1); i >= 0; i--){
         l->array[i+1] = l->array[i];
     }
     l->array[0] = item;
@@ -91,8 +91,9 @@ int main(void){
     insert(&l, 0, 20); 
     insert(&l, 0, 30); 
     insert_last(&l, 40);
-    print_list(&l);
     insert_first(&l, 50); print_list(&l);
+    insert_first(&l, 60); print_list(&l);
+    insert_first(&l, 70); print_list(&l);
 
     return 0;
 }
