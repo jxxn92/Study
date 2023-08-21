@@ -35,6 +35,18 @@ ListNode *insert(ListNode* head, ListNode* pre, int item){
     return head;
 }
 
+ListNode *search_list(ListNode *head, element x){
+
+    ListNode *p = head;
+
+    while (p!= NULL)
+    {
+        if (p->data == x) return p;
+        p = p ->link;
+    }
+    return NULL;
+}
+
 ListNode *delete_first(ListNode* head){
 
     ListNode *remove;
@@ -72,6 +84,9 @@ int main(void){
         head = insert_first(head, i);
         print_list(head);
     }
+
+    printf("\n find \n",search_list(head, 3));
+    
     for(int i = 0; i < 5; i++){
         head = delete_first(head);
         print_list(head);
