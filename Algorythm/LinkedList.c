@@ -76,6 +76,31 @@ void print_list(ListNode *head){
     printf("NULL \n");
 }
 
+ListNode *insert_last(ListNode *head, int item){
+
+    ListNode *p = (ListNode *)malloc(sizeof(ListNode));
+    ListNode *prev = head;
+
+    p->data = item;
+    p->link = NULL;
+
+    while (prev->link != NULL) 
+        prev = prev->link; // 끝 노드 도착인데.. 사실상
+    prev->link = p;
+
+    return head;
+
+}
+
+ListNode *sum_list(ListNode *head){
+
+    int s = 0;
+
+    for(ListNode *p = head; p != NULL; p = p->link){
+        s += p->data;
+    }
+    return s;
+}
 int main(void){
 
     ListNode *head = NULL;
@@ -84,13 +109,16 @@ int main(void){
         head = insert_first(head, i);
         print_list(head);
     }
-
-    printf("\n find \n",search_list(head, 3));
-    
-    for(int i = 0; i < 5; i++){
-        head = delete_first(head);
+    for(int i = 10; i < 15; i++){
+        head = insert_last(head, i);
         print_list(head);
     }
+    int sum = sum_list(head);
+    printf("%d",sum);
+    // for(int i = 0; i < 5; i++){
+    //     head = delete_last(head);
+    //     print_list(head);
+    // }
 
     return 0;
 }
