@@ -13,3 +13,12 @@ void error(char *message){
     fprintf(stderr, "%s \n", message);
     exit(1);
 }
+ListNode *insert_first(ListNode *head, int item){
+
+    ListNode *p = (ListNode *)malloc(sizeof(ListNode));
+    p->name = "jun";
+    p->link = head->link;
+    head = p;
+    
+    return head;
+}

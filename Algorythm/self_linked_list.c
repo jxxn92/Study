@@ -119,6 +119,24 @@ void print_list(ListNode *head){
     printf("NULL \n");
 }
 
+ListNode *find_max(ListNode *head){
+    int max_num = head->data;
+    for(ListNode *p = head; p != NULL; p=p->link){
+        if(p->data >= max_num)
+            max_num = p->data;
+    }
+    return max_num;
+}
+
+ListNode *find_min(ListNode *head){
+    int min_num = head->data;
+    for(ListNode *p = head; p != NULL; p = p->link){
+        if(p->data <= min_num)
+            min_num = p->data;
+    }
+    return min_num;
+}
+
 int main(void){
 
     ListNode *head = NULL;
