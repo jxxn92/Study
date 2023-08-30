@@ -1,11 +1,10 @@
 s = "banana"
 answer = []
-already = []
+dic = dict()
 
-for i in s:
-    if i in already:
+for i in range(len(s)):
+    if s[i] not in dic:
         answer.append(-1)
     else:
-        already.append(i)
-print(already)
-print(answer)
+        answer.append(i-dic[s[i]])
+    dic[s[i]] = i
