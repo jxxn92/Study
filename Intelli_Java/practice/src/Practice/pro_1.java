@@ -1,4 +1,4 @@
 package Practice;
 
-public class pro_1 {
+public class pro_1  {
 }

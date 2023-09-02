@@ -44,21 +44,74 @@ void postorder(TreeNode *root){
     }
 }
 
+int get_node_count(TreeNode *root){
+    int count = 0;
+
+    if (root != NULL)
+        count = 1 + get_node_count(root->left) + get_node_count(root->right);
+
+    return count;
+}
+
+// TreeNode *search(TreeNode *root, int key){
+//     if (root == NULL) return NULL;
+//     if (root->data == key) return root;
+//     else if (root->data > key){
+//         return search(root->left, key);
+//     } else {
+//         return search(root->right, key);
+//     }
+// }
+
+TreeNode *search(TreeNode *root, int key){
+
+    while (root != NULL){
+        if (root->data == key){
+            return root;
+        } else if (root->data > key) {
+            root = root->left;
+        } else {
+            root = root->right;
+        }
+    }
+    return NULL;
+}
+
+TreeNode *insert_node(TreeNode *root, int data){
+    if (root == NULL){
+        return new_node(data);
+    }
+    if (root->data > data){
+        root->left = insert_node(root->left, data);
+    } else if (root->data < data) {
+        root->right = insert_node(root->right, data);
+    }
+    
+    return root;
+
+}
+
+TreeNode *new_node(int key){
+    TreeNode *tmp = (TreeNode *)malloc(sizeof(TreeNode));
+    tmp->data = key;
+    tmp->left = tmp->right = NULL;
+    return tmp;
+}
+
+/**
+ * 삭제 연산의 경우 3가지 존재가 존재한다.
+ * 1. 삭제하는 노드가 단말 노드일 경우 (LV. 1) 이런 경우 그냥 부모 노드를 찾아 링크를 끊어 주면 된다.
+ * 2. 삭제하는 노드가 하나의 서브트리만 가지고 있는 경우 (LV. 2) 이 경우에는 임시 노드를 만들어 삭제한 링크에 있는 서브트리를 부모 노드의 링크에 연결 시켜 줘야 한다.
+ * 3. 삭제하는 노드가 두개의 서브트리를 모두 가지고 있는 경우 (LV. 3) 이 경우에는 위의 2번의 경우를 왼쪽 오른쪽 두번 하면 되는거 아닌가 생각해본다.
+ * 3번의 경우 왼쪽 서브트리에서 가장 큰 값 또는 오른쪽 서브트리에서 가장작은 값을 사용하여 노드를 이어줘야한다...?
+*/
+
+
 
 int main(void){
 
-    
-    printf("전위 순회 = ");
-    preorder(root);
-    printf("\n");
 
-    printf("중위 순회 = ");
-    inorder(root);
-    printf("\n");
-
-    printf("후위 순회 = ");
-    postorder(root);
-    printf("\n");
+    printf("%d",search(root,20));
 
     return 0;
 }
