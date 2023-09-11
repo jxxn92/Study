@@ -1,6 +1,10 @@
-stack = []
+n, m = map(int, input().split())
 
-stack.append(1)
-stack.append(2)
-print(stack)
-print(stack.pop())
+arr = []
+for i in range(n):
+    arr.append(int(input()))
+
+d = [10001] * (m+1)
+
+print(arr)
+print(d)
