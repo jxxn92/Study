@@ -6,5 +6,7 @@ for i in range(n):
 
 d = [10001] * (m+1)
 
-print(arr)
-print(d)
+d[0] = 0
+
+for i in range(n):
+    for j in range(arr[i], m+1): 

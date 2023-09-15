@@ -6,7 +6,6 @@ n = int(input())
 graph = [[] for _ in range(vertex + 1)]
 visited = [False] * (vertex + 1)
 answer = []
-cnt = 0
 
 for _ in range(n):
     v1, v2 = map(int, input().split())
@@ -15,10 +14,8 @@ for _ in range(n):
     graph[v2].append(v1)
 
 def dfs(graph, idx, visited):
-    global cnt
     visited[idx] = True
-    cnt += 1
-    
+
     answer.append(idx)
     for i in graph[idx]:
         if not visited[i]:
