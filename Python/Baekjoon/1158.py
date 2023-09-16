@@ -1,38 +1,19 @@
+import sys
 from collections import deque
-n, cnt = map(int, input().split())
-idx = 0
-lst = []
-q = deque(range(1,n+1))
-print(q)
+input = sys.stdin.readline 
 
-while (len(q) > 1):
-    if idx == 0:
-        left_num = q.popleft()
-        q.append(left_num)
-        idx += 1
-    if (idx % (cnt-1) != 0):
-        left_num = q.popleft()
-        q.append(left_num)
-        idx += 1
-    else:
-        left_num = q.popleft()
-        lst.append(left_num)
-        idx = 0
-lst.append(q.pop())
-# N = len(lst)
-# print('<', end="")
-# for i in range(N):
-#     if (i != N -1):
-#         print(f'{lst[i]}, ', end="")
-#     else:
-#         print(f'{lst[i]}', end="")
-# print('>', end="")
+answer = []
+num, idx = map(int, input().split())
 
-import math
-import time
+queue = deque([i for i in range(1, num+1)])
 
-start = time.time()
-math.factorial(100000)
-end = time.time()
+while queue:
+    for _ in range(idx-1):
+        queue.append(queue.popleft())
 
-print(f"{end - start:.5f} sec")
+    answer.append(queue.popleft())
+
+result = ", ".join(map(str, answer))
+print("<",result,">", sep='')
+
+# 이거랑 비슷하게 아이디어 내긴 했는데 최적화 진자 잘한 블록그 있어서 가져온거긴한데 아이디어는 같은데 최적화가 진짜 실력을 가르는 것 같다.

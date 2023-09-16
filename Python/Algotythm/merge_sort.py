@@ -1,5 +1,3 @@
-arr = [1, 3, 6, 9, 15, 2, 7, 21, 8]
-
 def merge_sort(arr):
     if len(arr) < 2:
         return arr
@@ -24,5 +22,6 @@ def merge_sort(arr):
 
     return merged_arr # 병합된 리스트를 리턴해준다.
 
+arr = [1, 3, 6, 9, 15, 2, 7, 21, 8]
 
 print(merge_sort(arr))
